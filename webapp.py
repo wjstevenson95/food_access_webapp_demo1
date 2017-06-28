@@ -5,7 +5,6 @@ from flask import render_template, flash, Markup
 from flask.ext.pymongo import PyMongo
 from flask.ext.pymongo import ObjectId
 
-
 from github import Github
 
 import pprint
@@ -31,15 +30,6 @@ For local operation, define in env.sh, then at command line, run:
 For Heroku, define variables via Settings=>Reveal Config Vars
 
 """ )
-
-#def connect():
-#   # Substitute the 5 pieces of information you got when creating
-#   # the Mongo DB Database (underlined in red in the screenshots)
-#   # Obviously, do not store your password as plaintext in practice
-#    connection = MongoClient(MONGO_DB_HOST, MONGO_DB_PORT)
-#    handle = connection[MONGO_DB_DATABASE_NAME]
-#    handle.authenticate(MONGO_DB_DATABASE_USERNAME, MONGO_DB_DATABASE_PASSWORD)
-#    return handle   
    
 app = Flask(__name__)
 
@@ -90,8 +80,8 @@ def home():
 def login():
     return github.authorize(callback=url_for('authorized',
                                              _external=True,
-                                             #_scheme='https'))
-                                             ))
+                                             _scheme='https'))
+                                             
     
 @app.route('/logout')
 def logout():
