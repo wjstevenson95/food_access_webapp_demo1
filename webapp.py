@@ -44,6 +44,7 @@ For Heroku, define variables via Settings=>Reveal Config Vars
 app = Flask(__name__)
 
 app.secret_key = os.environ['APP_SECRET_KEY']
+
 oauth = OAuth(app)
 
 app.config['MONGO_HOST'] = os.environ['MONGO_HOST']
@@ -87,8 +88,11 @@ def home():
 
 @app.route('/login')
 def login():
-    return github.authorize(callback=url_for('authorized', _external=True))
-
+    return github.authorize(callback=url_for('authorized',
+                                             _external=True,
+                                             #_scheme='https'))
+                                             ))
+    
 @app.route('/logout')
 def logout():
     session.clear()
