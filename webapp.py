@@ -12,6 +12,8 @@ import os
 import sys
 import traceback
 
+import food_access
+
 class GithubOAuthVarsNotDefined(Exception):
     '''raise this if the necessary env variables are not defined '''
 
@@ -85,13 +87,20 @@ def results_for_county():
 
     # TODO: Do the acutal computations here
 
-    county_requested = request.args['county']
+    collection = mongo.db['food_access']
+    document = collection.find_one()
+    county_list = document["food_access"]
+    county_dictionary = food_access.get_county_dictionary(county_list)
     
+    county_requested = request.args['county']
+
+    county_data = county_dictionary[county_requested]
+        
     return render_template('results_for_county.html',
-                           county=county_requested,
-                           population=123,
-                           low_access=45.67,
-                           low_access_low_income=12.34)
+        county=county_requested,
+        population=county_data["Population"],
+        low_access=county_data["Low Access Percents"]["Low Access Only"]["1 and 20 Miles"],
+        low_access_low_income = county_data["Low Access Percents"]["Low Income and Low Access"]["1 and 20 Miles"])
 
 @app.route('/login')
 def login():
