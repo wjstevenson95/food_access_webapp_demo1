@@ -5,20 +5,17 @@
 {% block content %}
   <h1>Home</h1>
 
-<p>This is a sample application to demonstrate the following techniques:</p>
+<p>This sample web application is based on data relating to food deserts.</p>
 
-<ul>
- <li> Using Flask, a Python-based webapp framework</li>
- <li> Using Heroku for hosting that app</li>
- <li> Using Github OAuth for user logins</li>
- <li> Restricting user logins to members of the github org: {{ github_org }} </li>
- <li> Using MongoDB, a NoSQL database hosted on mlab.com, for database storage. </li>
-</ul>
+<p>You can learn more about food deserts at:</p>
 
-<p>The source code is available on github at <a href="https://github.com/ucsd-cse-spis-2016/spis16-webapps-oauth-and-pymongo-v1">https://github.com/ucsd-cse-spis-2016/spis16-webapps-oauth-and-pymongo-v1
-</a></p>
+<ol>
+  <li>The <a href="https://en.wikipedia.org/wiki/Food_desert">Wikipedia page for Food Deserts</li>
+  <li>The <a href="http://www.ers.usda.gov/data-products/food-access-research-atlas.aspx">USDA web page where this data originally came from</li>
+</ol>
 
-<p>This is provided for participants in <a href="https://ucsd-cse-spis-2016.github.io">UCSD CSE SPIS 2016.</p>
+<p>We build this application using data from the <a href="https://think.cs.vt.edu/corgis/">CORGIS</a> project.</p>
 
+<p>We also used county adjacency data from here: <a href="https://github.com/pconrad/python-county-adjacency">https://github.com/pconrad/python-county-adjacency</a>.</p>
 
 {% endblock %}
