@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+  <h1>Search By County: Results</h1>
+
+<p>The values shown are the "Low Access Percents" for "1 and 20 miles".</p>
+<p>We are looking for collaborators from the social science to help us understand
+  better how to interpret these numbers.</p>
+
+  <table>
+    <tr><th>County</th><th>Population</th><th>Low Access</th><th>Low Access and Low Income</th></tr>
+    <tr>
+      <td>{{ county }}</td>
+      <td>{{ population }}</td>
+      <td>{{ low_access }}</td>
+      <td>{{ low_access_low_income }}</td>
+    </tr>
+  </table>
+
+{% endblock %}

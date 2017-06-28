@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+  <h1>Search By County</h1>
+
+<form action="/results/county" method="GET">
+  State and County (e.g. "CA Santa Barbara") <input type="text" name="county">
+</form>
+
+{% endblock %}
