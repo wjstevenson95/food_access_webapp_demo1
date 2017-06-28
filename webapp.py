@@ -76,6 +76,23 @@ def is_logged_in():
 def home():
     return render_template('home.html')
 
+@app.route('/search/county')
+def search_by_county():
+    return render_template('search_by_county.html')
+
+@app.route('/results/county')
+def results_for_county():
+
+    # TODO: Do the acutal computations here
+
+    county_requested = request.args['county']
+    
+    return render_template('results_for_county.html',
+                           county=county,
+                           population=123,
+                           low_access=45.67,
+                           low_access_low_income=12.34)
+
 @app.route('/login')
 def login():
     return github.authorize(callback=url_for('authorized',
