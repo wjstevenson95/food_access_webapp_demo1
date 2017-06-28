@@ -88,7 +88,7 @@ def results_for_county():
     county_requested = request.args['county']
     
     return render_template('results_for_county.html',
-                           county=county,
+                           county=county_requested,
                            population=123,
                            low_access=45.67,
                            low_access_low_income=12.34)
