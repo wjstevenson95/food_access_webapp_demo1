@@ -1,1 +1,1 @@
-web: foreman run python webapp.py
+web: bin/web
