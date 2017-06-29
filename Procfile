@@ -1,1 +1,1 @@
-web: gunicorn webapp:app --log-file=-
+web: foreman run python webapp.py
