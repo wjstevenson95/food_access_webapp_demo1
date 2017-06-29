@@ -119,12 +119,26 @@ def results_for_county():
         low_access=county_data["Low Access Percents"]["Low Access Only"]["1 and 20 Miles"],
         low_access_low_income = county_data["Low Access Percents"]["Low Income and Low Access"]["1 and 20 Miles"])
 
+def is_localhost():
+    """ Determines if app is running on localhost or not
+    Adapted from: https://stackoverflow.com/questions/17077863/how-to-see-if-a-flask-app-is-being-run-on-localhost
+    """
+    root_url = request.url_root
+    developer_url = 'http://127.0.0.1:5000/'
+    return root_url == developer_url
+
+ 
 @app.route('/login')
 def login():
-    return github.authorize(callback=url_for('authorized',
-                                             _external=True))
-#                                             _scheme='https'))
-                                             
+
+   if is_localhost():
+      return github.authorize(callback=url_for('authorized',
+                                             _external=True)
+
+   return github.authorize(callback=url_for('authorized',
+                                             _external=True,
+                                            _scheme='https')
+
     
 @app.route('/logout')
 def logout():
