@@ -45,14 +45,6 @@ print("About to execute app = Flask(__name__)")
 
 app = Flask(__name__)
 
-
-if os.environ.get('HEROKU') is not None:
-    import logging
-    stream_handler = logging.StreamHandler()
-    app.logger.addHandler(stream_handler)
-    app.logger.setLevel(logging.INFO)
-    app.logger.info('microblog startup')
-
 app.secret_key = os.environ['APP_SECRET_KEY']
 
 oauth = OAuth(app)
@@ -115,7 +107,7 @@ def results_for_county():
     collection = mongo.db['food_access']
     document = collection.find_one()
     county_list = document["food_access"]
-    county_dictionary = food_access.get_county_dictionary(county_list)
+    county_dictionary = get_county_dictionary(county_list)
     
     county_requested = request.args['county']
 
