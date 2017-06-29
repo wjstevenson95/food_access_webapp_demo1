@@ -32,8 +32,11 @@ For local operation, define in env.sh, then at command line, run:
 For Heroku, define variables via Settings=>Reveal Config Vars
 
 """ )
-   
+
+print("About to execute app = Flask(__name__)")
+
 app = Flask(__name__)
+
 
 app.secret_key = os.environ['APP_SECRET_KEY']
 
@@ -44,7 +47,12 @@ app.config['MONGO_PORT'] = int(os.environ['MONGO_PORT'])
 app.config['MONGO_DBNAME'] = os.environ['MONGO_DBNAME']
 app.config['MONGO_USERNAME'] = os.environ['MONGO_USERNAME']
 app.config['MONGO_PASSWORD'] = os.environ['MONGO_PASSWORD']
+
+print("About to do mongo= PyMongo(app)")
+
 mongo = PyMongo(app)
+
+print("Just did mongo= PyMongo(app)")
 
 # This code originally from https://github.com/lepture/flask-oauthlib/blob/master/example/github.py
 # Edited by P. Conrad for SPIS 2016 to add getting Client Id and Secret from
@@ -62,6 +70,8 @@ github = oauth.remote_app(
     access_token_url='https://github.com/login/oauth/access_token',
     authorize_url='https://github.com/login/oauth/authorize'
 )
+
+print("Just did github = oauth.remote_app ... ")
 
 @app.context_processor
 def inject_logged_in():
