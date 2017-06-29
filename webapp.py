@@ -12,7 +12,15 @@ import os
 import sys
 import traceback
 
-import food_access
+
+def get_county_dictionary(county_list):
+   result = {}
+   for c in county_list:
+      key = c["State"]+" "+c["County"]
+      result[key] = c
+
+   return result
+
 
 class GithubOAuthVarsNotDefined(Exception):
     '''raise this if the necessary env variables are not defined '''
