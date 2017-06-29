@@ -105,8 +105,8 @@ def results_for_county():
 @app.route('/login')
 def login():
     return github.authorize(callback=url_for('authorized',
-                                             _external=True,
-                                             _scheme='https'))
+                                             _external=True))
+#                                             _scheme='https'))
                                              
     
 @app.route('/logout')
