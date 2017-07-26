@@ -5,5 +5,7 @@ A demo webapp based on the [CORGIS food_access dataset](https://think.cs.vt.edu/
 Uses Python and Flask.
 
 
+# More info on food deserts
 
+* A Map from the USDA's website: https://www.ers.usda.gov/data-products/food-access-research-atlas/go-to-the-atlas.aspx
 
