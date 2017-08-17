@@ -12,7 +12,7 @@ import os
 import sys
 import traceback
 
-
+"""
 def get_county_dictionary(county_list):
    result = {}
    for c in county_list:
@@ -20,6 +20,7 @@ def get_county_dictionary(county_list):
       result[key] = c
 
    return result
+"""
 
 
 class GithubOAuthVarsNotDefined(Exception):
@@ -95,10 +96,33 @@ def is_logged_in():
 def home():
     return render_template('home.html')
 
+"""
 @app.route('/search/county')
 def search_by_county():
     return render_template('search_by_county.html')
+"""
 
+@app.route('/search/cars')
+def search_by_cars():
+        return render_template('search_for_cars.html')
+
+@app.route('/results/cars')
+def results_for_car():
+    collection = mong.db['cars']
+    document = collection.find_one()
+    cars_list = document["cars"] # document contains a list
+
+    criteria_requested = request.args
+    
+    search_cars_list = []
+    for cars_dict in cars_list:
+        for (key,value) in cars_dict:
+            if value in criteria_requested:
+                search_cars_list.append(cars_dict.copy())
+
+    return render_template('results_for_car.html', results=search_cars_list)
+
+"""
 @app.route('/results/county')
 def results_for_county():
 
@@ -118,6 +142,8 @@ def results_for_county():
         population=county_data["Population"],
         low_access=county_data["Low Access Percents"]["Low Access Only"]["1 and 20 Miles"],
         low_access_low_income = county_data["Low Access Percents"]["Low Income and Low Access"]["1 and 20 Miles"])
+"""
+
 
 def is_localhost():
     """ Determines if app is running on localhost or not

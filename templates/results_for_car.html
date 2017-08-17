@@ -1,1 +1,55 @@
-<!DOCTYPE html>
+{% extends "layout.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+	<h1>Car Search Results:</h1>
+
+	<table>
+		<thead>
+			<tr>
+				{% for key in {{ results.0.items() }} %}
+					<th>{{ key }}</th>
+				{% endfor %}
+			</tr>
+		</thead>
+		<tbody>
+			{% for dict_item in {{ results }} %}
+				<tr>
+					{% for key,value in dict_item.items() %}
+						<td>{{ value }}</td>
+					{% end for %}
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<!--
+	<script>
+		// JavaScript method to take template variable results from database query and present them
+		// Split results
+		// Then loop through number of results
+		// Create table element for each one
+		var car_results  =  {{ results }}
+
+		var $results_table = $('<table>');
+		var $thead = $('<thead>');
+		var $tbody = $('<tbody>');
+
+		var $theadrow = $('<tr>');
+		$theadrow.append($('<th>').text("Make"));
+		$theadrow.append($('<th>').text("Model Year"));
+		$theadrow.append($('<th>').text("ID"));
+		$theadrow.append($('<th>').text("Classification"));
+		$theadrow.append($('<th>').text("Year"));
+
+		$results_table.append($thead);
+		$results_table.append($tbody);
+
+		var length = Object.keys(car_results).length
+		for(i = 0; i < length; i++) {
+
+		};
+	</script>
+	-->
+
+{% end block %}
