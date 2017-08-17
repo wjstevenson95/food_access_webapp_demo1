@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}Home{% end block %}
+
+
+{% block content %}
+<h1> Search Car by Various Criteria </h1>
+
+<form action="/results/car" method="GET">
+	<fieldset>
+		<legend>Car Information:</legend>
+		Make:<br>
+		<input type="text" name="make" placeholder="Audi"><br>
+		Model:<br>
+		<input type="text" name="model" placeholder="2009 Audi A3"><br>
+		Year:<br>
+		<input type="text" name="year" placeholder="2009"><br>
+		Classification:<br>
+		<input type="text" name="class" placeholder="Automatic transmission"><br><br>
+		<input type="submit" value="Submit">
+	</fieldset>
+</form>
+
+{% endblock %}
+
